@@ -25,7 +25,7 @@ describe('expenseReport', () => {
   });
 });
 
-describe('totalExpense', () => {
+describe('totalExpenditure', () => {
   const milk = new Expense('milk', 50, 'food');
   const oats = new Expense('oats', 150, 'food');
   const busTicket = new Expense('bus ticket', 40, 'travel');
@@ -33,14 +33,14 @@ describe('totalExpense', () => {
   it('Should calculate total expense of a day', () => {
     const report1 = new ExpenseReport();
     report1.add(milk);
-    assert.strictEqual(report1.totalExpense(), 50);
+    assert.strictEqual(report1.totalExpenditure(), 50);
     report1.add(oats);
     report1.add(busTicket);
-    assert.strictEqual(report1.totalExpense(), 240);
+    assert.strictEqual(report1.totalExpenditure(), 240);
   });
 });
 
-describe('totalExpenseOf', () => {
+describe('totalExpenditureOf', () => {
   const milk = new Expense('milk', 50, 'food');
   const busTicket = new Expense('bus ticket', 40, 'travel');
   const oats = new Expense('oats', 150, 'food');
@@ -49,9 +49,25 @@ describe('totalExpenseOf', () => {
     const report = new ExpenseReport();
     report.add(milk);
     report.add(busTicket);
-    assert.strictEqual(report.totalExpenseOf('food'), 50);
-    assert.strictEqual(report.totalExpenseOf('travel'), 40);
+    assert.strictEqual(report.totalExpenditureOf('food'), 50);
+    assert.strictEqual(report.totalExpenditureOf('travel'), 40);
     report.add(oats);
-    assert.strictEqual(report.totalExpenseOf('food'), 200);
+    assert.strictEqual(report.totalExpenditureOf('food'), 200);
+  });
+});
+
+describe('categoryStats', () => {
+  const milk = new Expense('milk', 50, 'food');
+  const busTicket = new Expense('bus ticket', 50, 'travel');
+  const oats = new Expense('oats', 100, 'food');
+  const movie = new Expense('movie Ticket', 200, 'entertainment');
+
+  it('Should give percentage of each category in total expense', () => {
+    const report = new ExpenseReport();
+    report.add(milk);
+    report.add(busTicket);
+    report.add(oats);
+    report.add(movie);
+    assert.deepStrictEqual(report.categoryStats(), { food: 37.5, travel: 12.5, entertainment: 50 });
   });
 });

@@ -1,18 +1,20 @@
 class ExpenseReport {
+  #log;
+
   constructor() {
-    this.log = [];
+    this.#log = [];
   }
 
   add(expense) {
-    this.log.push(expense);
+    this.#log.push(expense);
   }
 
-  totalExpense() {
-    return this.log.reduce((total, expense) => total + expense.cost, 0);
+  totalExpenditure() {
+    return this.#log.reduce((total, expense) => total + expense.cost, 0);
   }
 
-  totalExpenseOf(category) {
-    return this.log.reduce((total, expense) => {
+  totalExpenditureOf(category) {
+    return this.#log.reduce((total, expense) => {
       if (expense.category === category) {
         total += expense.cost;
       }
@@ -22,9 +24,11 @@ class ExpenseReport {
 
   equals(otherReport) {
     return otherReport instanceof ExpenseReport &&
-      otherReport.log.length === this.log.length &&
-      otherReport.log.every((expense, index) => expense.equals(this.log[index]));
+      otherReport.#log.length === this.#log.length &&
+      otherReport.#log.every((expense, index) => expense.equals(this.#log[index]));
   }
+
+
 }
 
 exports.ExpenseReport = ExpenseReport;

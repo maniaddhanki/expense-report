@@ -1,7 +1,6 @@
 # Expense Report
 
 - **TODO :**
-  - [ ] Implement Expense on a category
   - [ ] Implement percentage of each category
   - [ ] Implement Higest Expense
 - **MAYBE :**
@@ -13,3 +12,4 @@
   - [x] Implement add method to add an expense
   - [x] Implement totalExpense method
   - [x] make expense as an entity
+  - [x] Implement Expense on a category
