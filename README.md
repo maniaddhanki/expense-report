@@ -8,8 +8,11 @@ Makes an `Expense Report` of a day.
 - ## Total Expense 
     Gives total expense of day
 
-- ## Most Spent Category
-    Gives category with most expense
+- ## Expense on a category
+    Gives expense of a particular category
+
+- ## Percentage of each category
+    Gives percentage of each category
 
 - ## Higest Expense
     Gives `Higest Expense` of day

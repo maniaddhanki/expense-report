@@ -39,3 +39,19 @@ describe('totalExpense', () => {
     assert.strictEqual(report1.totalExpense(), 240);
   });
 });
+
+describe('totalExpenseOf', () => {
+  const milk = new Expense('milk', 50, 'food');
+  const busTicket = new Expense('bus ticket', 40, 'travel');
+  const oats = new Expense('oats', 150, 'food');
+
+  it('Should calculate expense of given category', () => {
+    const report = new ExpenseReport();
+    report.add(milk);
+    report.add(busTicket);
+    assert.strictEqual(report.totalExpenseOf('food'), 50);
+    assert.strictEqual(report.totalExpenseOf('travel'), 40);
+    report.add(oats);
+    assert.strictEqual(report.totalExpenseOf('food'), 200);
+  });
+});

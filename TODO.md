@@ -1,7 +1,9 @@
 # Expense Report
 
 - **TODO :**
-
+  - [ ] Implement Expense on a category
+  - [ ] Implement percentage of each category
+  - [ ] Implement Higest Expense
 - **MAYBE :**
 
 - **DONE :**
