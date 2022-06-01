@@ -1,5 +1,3 @@
-const { deepEqual } = require('./deepEqual.js');
-
 class ExpenseReport {
   constructor() {
     this.log = [];
@@ -9,9 +7,14 @@ class ExpenseReport {
     this.log.push(expense);
   }
 
+  totalExpense() {
+    return this.log.reduce((total, expense) => total + expense.cost, 0);
+  }
+
   equals(otherReport) {
     return otherReport instanceof ExpenseReport &&
-      deepEqual(this.log, otherReport.log);
+      otherReport.log.length === this.log.length &&
+      otherReport.log.every((expense, index) => expense.equals(this.log[index]));
   }
 }
 
