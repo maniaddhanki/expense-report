@@ -22,6 +22,20 @@ class ExpenseReport {
     }, 0);
   }
 
+  calPercent(category) {
+    const total = this.totalExpenditure();
+    const categoryExpenditure = this.totalExpenditureOf(category);
+    return (categoryExpenditure / total) * 100;
+  }
+
+  categoryStats() {
+    const categories = new Set();
+    this.#log.forEach(expense => categories.add(expense.category));
+    const stats = {};
+    categories.forEach(category => stats[category] = this.calPercent(category));
+    return stats;
+  }
+
   equals(otherReport) {
     return otherReport instanceof ExpenseReport &&
       otherReport.#log.length === this.#log.length &&
